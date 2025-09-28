@@ -18,6 +18,7 @@ export class UsersService {
             throw new Error('Role USER not found');
         }
         await user.$set('roles', [role.id]);
+        user.dataValues.roles = [role];
         return user;
     }
 
@@ -26,5 +27,13 @@ export class UsersService {
             include: { all: true },
         });
         return users;
+    }
+
+    async getUserByEmail(email: string) {
+        const user = await this.userRepository.findOne({
+            where: { email },
+            include: { all: true },
+        });
+        return user;
     }
 }
