@@ -7,7 +7,7 @@ import { User } from './users.model';
 @ApiTags('Пользователи')
 @Controller('users')
 export class UsersController {
-    constructor(private userService: UsersService) { }
+    constructor(private userService: UsersService) {}
 
     @ApiOperation({ summary: 'Создание пользователя' })
     @ApiResponse({ status: 200, type: User })
